@@ -62,7 +62,7 @@
 <meta property="og:site_name" content="赵晓东的网络日志">
 <meta property="og:description" content="问题：安装vim插件vim设置： encoding=utf-8，内部机制，不要改变，在任何时候都不要试图修改encoding设置 termencoding=utf-8，vim输出到终端显示用，只涉及到显示，不涉及文件内容的改变 fileencodings=utf-8,ucs-bom,gbk,cp936,gb2312,gb18030，依次识别文件用  两个现象： 若服务器端系统LANG、secucr">
 <meta property="og:locale" content="zh">
-<meta property="og:updated_time" content="2019-08-15T13:39:19.936Z">
+<meta property="og:updated_time" content="2019-08-15T13:45:36.375Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Secucrt，vim插件以及系统语言LANG 对printf的影响">
 <meta name="twitter:description" content="问题：安装vim插件vim设置： encoding=utf-8，内部机制，不要改变，在任何时候都不要试图修改encoding设置 termencoding=utf-8，vim输出到终端显示用，只涉及到显示，不涉及文件内容的改变 fileencodings=utf-8,ucs-bom,gbk,cp936,gb2312,gb18030，依次识别文件用  两个现象： 若服务器端系统LANG、secucr">
@@ -228,7 +228,7 @@
                 
               
 
-              <time title="Erstellt: 2019-08-15 10:07:43 / Geändert am: 21:39:19" itemprop="dateCreated datePublished" datetime="2019-08-15T10:07:43+08:00">2019-08-15</time>
+              <time title="Erstellt: 2019-08-15 10:07:43 / Geändert am: 21:45:36" itemprop="dateCreated datePublished" datetime="2019-08-15T10:07:43+08:00">2019-08-15</time>
             </span>
           
             
@@ -265,7 +265,7 @@
 <li>代码以UTF-8格式创建和编写以及保存和gcc编译运行；</li>
 <li>若代码文档格式为GBK或者GB2312等，则编译运行时应制定gcc的选项-finput-charset；</li>
 </ul>
-<p>参考：<br>vim插件<a href>https://github.com/ma6174/vim-deprecated</a><br>gcc编译选项<a href>https://blog.csdn.net/wangsen_sc/article/details/6915995</a><br><a href>http://blog.chinaunix.net/uid-28458801-id-4515769.html</a><br>vim encoding fileencoding termencoding<br><a href>https://www.cnblogs.com/hopeworld/archive/2011/04/20/2022335.html</a></p>
+<p>参考：<br>vim插件<br><a href>https://github.com/ma6174/vim-deprecated</a><br>gcc编译选项<br><a href>https://blog.csdn.net/wangsen_sc/article/details/6915995</a><br><a href>http://blog.chinaunix.net/uid-28458801-id-4515769.html</a><br>vim encoding fileencoding termencoding<br><a href>https://www.cnblogs.com/hopeworld/archive/2011/04/20/2022335.html</a></p>
 <p>疑问1：<br>-finput-charset 指定源文件的编码（若不指定，默认是UTF-8）<br>-fexec-charset 指定多字节字符串(const char<em>)常量在编译后的程序里保存的编码集（若不指定，默认是UTF-8）<br>-fwide-exec-charset 指定宽字节字符串(const wchar_t</em>)常量在编译后的程序里的保存的编码集</p>
 <p>这几个编译选项的区别含义不是很明白；</p>
 <p>疑问2：</p>
@@ -432,15 +432,6 @@
 
 
   
-  <script>
-    (function(){
-      var bp = document.createElement('script');
-      var curProtocol = window.location.protocol.split(':')[0];
-      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(bp, s);
-    })();
-  </script>
 
 
 
