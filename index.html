@@ -224,7 +224,7 @@
                 
               
 
-              <time title="Erstellt: 2019-08-15 10:07:43 / Geändert am: 21:19:46" itemprop="dateCreated datePublished" datetime="2019-08-15T10:07:43+08:00">2019-08-15</time>
+              <time title="Erstellt: 2019-08-15 10:07:43 / Geändert am: 21:39:19" itemprop="dateCreated datePublished" datetime="2019-08-15T10:07:43+08:00">2019-08-15</time>
             </span>
           
             
@@ -249,20 +249,14 @@
 <li>termencoding=utf-8，vim输出到终端显示用，只涉及到显示，不涉及文件内容的改变</li>
 <li>fileencodings=utf-8,ucs-bom,gbk,cp936,gb2312,gb18030，依次识别文件用</li>
 </ul>
-<h2 id="两个现象："><a href="#两个现象：" class="headerlink" title="两个现象："></a>两个现象：</h2><ol>
-<li><ul>
+<h2 id="两个现象："><a href="#两个现象：" class="headerlink" title="两个现象："></a>两个现象：</h2><ul>
 <li>若服务器端系统LANG、secucrt按照GBK来设置，那么vim打开GB2313编码的文档无法正常显示，但gcc编译运行时，printf打印中文正常显示在终端secucrt；</li>
 </ul>
-</li>
-</ol>
 <h3 id="解决方法："><a href="#解决方法：" class="headerlink" title="解决方法："></a>解决方法：</h3><p>更改vim插件设置，~/.vimrc中termencoding=GBK</p>
 <p>此时，gcc编译选择文件编码类型为GB2312或GBK的话，程序printf中文输出会乱码，应不指定（默认为utf-8），或者指定为utf-8则输出正确。这个现象，暂时无法解释。</p>
-<ol start="2">
-<li><ul>
+<ul>
 <li>若服务器端系统LANG、secucrt按照utf8来设置，那么vim打开GB2312编码的文档时可以正常显示中文（跟vim插件也有关，termencoding=utf-8），但是gcc后的程序，printf的中文结果乱码<br>解决方案：gcc 编译时，加上对文档字符集的指定 -finput-charset=GB2312才能正常printf中文</li>
 </ul>
-</li>
-</ol>
 <h3 id="解决方法：将main-c使用vscode转换为utf8，无论是否带bom，则不再需要指定-finput-charset就可正常printf中文；"><a href="#解决方法：将main-c使用vscode转换为utf8，无论是否带bom，则不再需要指定-finput-charset就可正常printf中文；" class="headerlink" title="解决方法：将main.c使用vscode转换为utf8，无论是否带bom，则不再需要指定-finput-charset就可正常printf中文；"></a>解决方法：将main.c使用vscode转换为utf8，无论是否带bom，则不再需要指定-finput-charset就可正常printf中文；</h3><h2 id="无论如何，掌握原则如下："><a href="#无论如何，掌握原则如下：" class="headerlink" title="无论如何，掌握原则如下："></a>无论如何，掌握原则如下：</h2><ul>
 <li>服务端系统语言设置为UTF-8，secucrt设置为utf-8，参考《远程SSH连接Linux中文乱码》的方案二；</li>
 <li>代码以UTF-8格式创建和编写以及保存和gcc编译运行；</li>
