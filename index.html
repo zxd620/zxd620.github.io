@@ -224,7 +224,7 @@
                 
               
 
-              <time title="Erstellt: 2019-08-15 10:07:43 / Geändert am: 10:20:24" itemprop="dateCreated datePublished" datetime="2019-08-15T10:07:43+08:00">2019-08-15</time>
+              <time title="Erstellt: 2019-08-15 10:07:43 / Geändert am: 21:19:46" itemprop="dateCreated datePublished" datetime="2019-08-15T10:07:43+08:00">2019-08-15</time>
             </span>
           
             
@@ -244,14 +244,31 @@
 
       
           
-            <p>安装vim插件后<a href="https://github.com/ma6174/vim-deprecated" target="_blank" rel="noopener">https://github.com/ma6174/vim-deprecated</a><br>vim设置为：<br>encoding=utf-8，内部机制，不要改变，在任何时候都不要试图修改encoding设置<br>termencoding=utf-8，vim输出到终端显示用，只涉及到显示，不涉及文件内容的改变<br>fileencodings=utf-8,ucs-bom,gbk,cp936,gb2312,gb18030，依次识别文件用</p>
-<p>两个现象：<br>1、若服务器端系统LANG、secucrt按照GBK来设置，那么vim打开GB2313编码的文档无法正常显示，但gcc编译运行时，printf打印中文正常显示在终端secucrt；</p>
-<p>解决方法：更改vim插件设置，~/.vimrc中termencoding=GBK</p>
+            <h2 id="问题：安装vim插件"><a href="#问题：安装vim插件" class="headerlink" title="问题：安装vim插件"></a>问题：安装<a href="https://github.com/ma6174/vim-deprecated" target="_blank" rel="noopener">vim插件</a></h2><h3 id="vim设置："><a href="#vim设置：" class="headerlink" title="vim设置："></a>vim设置：</h3><ul>
+<li>encoding=utf-8，内部机制，不要改变，在任何时候都不要试图修改encoding设置</li>
+<li>termencoding=utf-8，vim输出到终端显示用，只涉及到显示，不涉及文件内容的改变</li>
+<li>fileencodings=utf-8,ucs-bom,gbk,cp936,gb2312,gb18030，依次识别文件用</li>
+</ul>
+<h2 id="两个现象："><a href="#两个现象：" class="headerlink" title="两个现象："></a>两个现象：</h2><ol>
+<li><ul>
+<li>若服务器端系统LANG、secucrt按照GBK来设置，那么vim打开GB2313编码的文档无法正常显示，但gcc编译运行时，printf打印中文正常显示在终端secucrt；</li>
+</ul>
+</li>
+</ol>
+<h3 id="解决方法："><a href="#解决方法：" class="headerlink" title="解决方法："></a>解决方法：</h3><p>更改vim插件设置，~/.vimrc中termencoding=GBK</p>
 <p>此时，gcc编译选择文件编码类型为GB2312或GBK的话，程序printf中文输出会乱码，应不指定（默认为utf-8），或者指定为utf-8则输出正确。这个现象，暂时无法解释。</p>
-<p>2、若服务器端系统LANG、secucrt按照utf8来设置，那么vim打开GB2312编码的文档时可以正常显示中文（跟vim插件也有关，termencoding=utf-8），但是gcc后的程序，printf的中文结果乱码<br>解决方案：gcc 编译时，加上对文档字符集的指定 -finput-charset=GB2312才能正常printf中文</p>
-<p>解决方法：将main.c使用vscode转换为utf8，无论是否带bom，则不再需要指定-finput-charset就可正常printf中文；</p>
-<p>无论如何，掌握原则如下：<br>1、服务端系统语言设置为UTF-8，secucrt设置为utf-8，参考《远程SSH连接Linux中文乱码》的方案二；<br>2、代码以UTF-8格式创建和编写以及保存和gcc编译运行；<br>3、若代码文档格式为GBK或者GB2312等，则编译运行时应制定gcc的选项-finput-charset；</p>
-<p>参考：<br>vim插件<a href="https://github.com/ma6174/vim-deprecated" target="_blank" rel="noopener">https://github.com/ma6174/vim-deprecated</a><br>gcc编译选项<a href="https://blog.csdn.net/wangsen_sc/article/details/6915995" target="_blank" rel="noopener">https://blog.csdn.net/wangsen_sc/article/details/6915995</a><br><a href="http://blog.chinaunix.net/uid-28458801-id-4515769.html" target="_blank" rel="noopener">http://blog.chinaunix.net/uid-28458801-id-4515769.html</a><br>vim encoding fileencoding termencoding<br><a href="https://www.cnblogs.com/hopeworld/archive/2011/04/20/2022335.html" target="_blank" rel="noopener">https://www.cnblogs.com/hopeworld/archive/2011/04/20/2022335.html</a></p>
+<ol start="2">
+<li><ul>
+<li>若服务器端系统LANG、secucrt按照utf8来设置，那么vim打开GB2312编码的文档时可以正常显示中文（跟vim插件也有关，termencoding=utf-8），但是gcc后的程序，printf的中文结果乱码<br>解决方案：gcc 编译时，加上对文档字符集的指定 -finput-charset=GB2312才能正常printf中文</li>
+</ul>
+</li>
+</ol>
+<h3 id="解决方法：将main-c使用vscode转换为utf8，无论是否带bom，则不再需要指定-finput-charset就可正常printf中文；"><a href="#解决方法：将main-c使用vscode转换为utf8，无论是否带bom，则不再需要指定-finput-charset就可正常printf中文；" class="headerlink" title="解决方法：将main.c使用vscode转换为utf8，无论是否带bom，则不再需要指定-finput-charset就可正常printf中文；"></a>解决方法：将main.c使用vscode转换为utf8，无论是否带bom，则不再需要指定-finput-charset就可正常printf中文；</h3><h2 id="无论如何，掌握原则如下："><a href="#无论如何，掌握原则如下：" class="headerlink" title="无论如何，掌握原则如下："></a>无论如何，掌握原则如下：</h2><ul>
+<li>服务端系统语言设置为UTF-8，secucrt设置为utf-8，参考《远程SSH连接Linux中文乱码》的方案二；</li>
+<li>代码以UTF-8格式创建和编写以及保存和gcc编译运行；</li>
+<li>若代码文档格式为GBK或者GB2312等，则编译运行时应制定gcc的选项-finput-charset；</li>
+</ul>
+<p>参考：<br>vim插件<a href>https://github.com/ma6174/vim-deprecated</a><br>gcc编译选项<a href>https://blog.csdn.net/wangsen_sc/article/details/6915995</a><br><a href>http://blog.chinaunix.net/uid-28458801-id-4515769.html</a><br>vim encoding fileencoding termencoding<br><a href>https://www.cnblogs.com/hopeworld/archive/2011/04/20/2022335.html</a></p>
 <p>疑问1：<br>-finput-charset 指定源文件的编码（若不指定，默认是UTF-8）<br>-fexec-charset 指定多字节字符串(const char<em>)常量在编译后的程序里保存的编码集（若不指定，默认是UTF-8）<br>-fwide-exec-charset 指定宽字节字符串(const wchar_t</em>)常量在编译后的程序里的保存的编码集</p>
 <p>这几个编译选项的区别含义不是很明白；</p>
 <p>疑问2：</p>
@@ -425,8 +442,6 @@
   </span>
   <span class="author" itemprop="copyrightHolder">赵晓东</span>
 </div>
-  <div class="powered-by">Erstellt mit  <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.9.0</div>
-  <span class="post-meta-divider">|</span>
   <div class="theme-info">Design – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.3.0</div>
 
         
@@ -467,6 +482,15 @@
 
 
   
+  <script>
+    (function(){
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      bp.src = (curProtocol === 'https') ? 'https://zz.bdstatic.com/linksubmit/push.js' : 'http://push.zhanzhang.baidu.com/push.js';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
 
 
 
