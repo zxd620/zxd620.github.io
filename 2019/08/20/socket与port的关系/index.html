@@ -55,17 +55,19 @@
   };
 </script>
 
-  <meta name="description" content="关于客户端socket与port的关系 确定进程pid 1ps -ef |grep &amp;apos;node ./app&amp;apos;|grep -v grep  结果： 1root      7915     1  1 21:53 pts/0    00:00:00 node ./appDevice.js 1  查询对应pid占用的port 1netstat -nap | grep 7915  结果：">
+  <meta name="description" content="何为socket 服务器进程首先要绑定一个端口并监听来自其他客户端的连接。如果某个客户端连接过来了，服务器就与该客户端建立Socket连接，随后的通信就靠这个Socket连接了。   所以，服务器会打开固定端口（比如80）监听，每来一个客户端连接，就创建该Socket连接。由于服务器会有大量来自客户端的连接，所以，服务器要能够区分一个Socket连接是和哪个客户端绑定的。一个Socket依赖4项：">
 <meta property="og:type" content="article">
-<meta property="og:title" content="socket与port的关系">
+<meta property="og:title" content="Socket与Port的关系">
 <meta property="og:url" content="http://yoursite.com/2019/08/20/socket与port的关系/index.html">
 <meta property="og:site_name" content="赵晓东的网络日志">
-<meta property="og:description" content="关于客户端socket与port的关系 确定进程pid 1ps -ef |grep &amp;apos;node ./app&amp;apos;|grep -v grep  结果： 1root      7915     1  1 21:53 pts/0    00:00:00 node ./appDevice.js 1  查询对应pid占用的port 1netstat -nap | grep 7915  结果：">
+<meta property="og:description" content="何为socket 服务器进程首先要绑定一个端口并监听来自其他客户端的连接。如果某个客户端连接过来了，服务器就与该客户端建立Socket连接，随后的通信就靠这个Socket连接了。   所以，服务器会打开固定端口（比如80）监听，每来一个客户端连接，就创建该Socket连接。由于服务器会有大量来自客户端的连接，所以，服务器要能够区分一个Socket连接是和哪个客户端绑定的。一个Socket依赖4项：">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-08-20T05:56:11.479Z">
+<meta property="og:image" content="http://yoursite.com/pic/%E6%9C%8D%E5%8A%A1%E5%99%A8Socket%E4%B8%8EPort.png">
+<meta property="og:updated_time" content="2019-08-20T14:03:18.698Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="socket与port的关系">
-<meta name="twitter:description" content="关于客户端socket与port的关系 确定进程pid 1ps -ef |grep &amp;apos;node ./app&amp;apos;|grep -v grep  结果： 1root      7915     1  1 21:53 pts/0    00:00:00 node ./appDevice.js 1  查询对应pid占用的port 1netstat -nap | grep 7915  结果：">
+<meta name="twitter:title" content="Socket与Port的关系">
+<meta name="twitter:description" content="何为socket 服务器进程首先要绑定一个端口并监听来自其他客户端的连接。如果某个客户端连接过来了，服务器就与该客户端建立Socket连接，随后的通信就靠这个Socket连接了。   所以，服务器会打开固定端口（比如80）监听，每来一个客户端连接，就创建该Socket连接。由于服务器会有大量来自客户端的连接，所以，服务器要能够区分一个Socket连接是和哪个客户端绑定的。一个Socket依赖4项：">
+<meta name="twitter:image" content="http://yoursite.com/pic/%E6%9C%8D%E5%8A%A1%E5%99%A8Socket%E4%B8%8EPort.png">
   <link rel="canonical" href="http://yoursite.com/2019/08/20/socket与port的关系/">
 
 
@@ -80,7 +82,7 @@
   };
 </script>
 
-  <title>socket与port的关系 | 赵晓东的网络日志</title>
+  <title>Socket与Port的关系 | 赵晓东的网络日志</title>
   
 
 
@@ -211,7 +213,7 @@
       <header class="post-header">
 
         
-          <h1 class="post-title" itemprop="name headline">socket与port的关系
+          <h1 class="post-title" itemprop="name headline">Socket与Port的关系
 
             
           </h1>
@@ -228,7 +230,7 @@
                 
               
 
-              <time title="Created: 2019-08-20 13:50:48 / Modified: 13:56:11" itemprop="dateCreated datePublished" datetime="2019-08-20T13:50:48+08:00">2019-08-20</time>
+              <time title="Created: 2019-08-20 13:50:48 / Modified: 22:03:18" itemprop="dateCreated datePublished" datetime="2019-08-20T13:50:48+08:00">2019-08-20</time>
             </span>
           
             
@@ -247,8 +249,31 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="关于客户端socket与port的关系"><a href="#关于客户端socket与port的关系" class="headerlink" title="关于客户端socket与port的关系"></a>关于客户端socket与port的关系</h2><ul>
-<li><p>确定进程pid</p>
+        <h2 id="何为socket"><a href="#何为socket" class="headerlink" title="何为socket"></a><a href="https://www.liaoxuefeng.com/wiki/1016959663602400/1017788916649408" target="_blank" rel="noopener">何为socket</a></h2><blockquote>
+<p>服务器进程首先要绑定一个端口并监听来自其他客户端的连接。如果某个客户端连接过来了，服务器就与该客户端建立Socket连接，随后的通信就靠这个Socket连接了。</p>
+</blockquote>
+<blockquote>
+<p>所以，服务器会打开固定端口（比如80）监听，每来一个客户端连接，就创建该Socket连接。由于服务器会有大量来自客户端的连接，所以，服务器要能够区分一个Socket连接是和哪个客户端绑定的。<strong>一个Socket依赖4项：服务器地址、服务器端口、客户端地址、客户端端口来唯一确定一个Socket。</strong></p>
+</blockquote>
+<blockquote>
+<p>但是服务器还需要同时响应多个客户端的请求，所以，每个连接都需要一个新的进程或者新的线程来处理，否则，服务器一次就只能服务一个客户端了。<strong>（注：nodejs则通过异步+回调来实现）</strong></p>
+</blockquote>
+<blockquote>
+<p>同一个端口，被一个Socket绑定了以后，就不能被别的Socket绑定了。</p>
+</blockquote>
+<h2 id="关于客户端Socket与Port的关系"><a href="#关于客户端Socket与Port的关系" class="headerlink" title="关于客户端Socket与Port的关系"></a>关于客户端Socket与Port的关系</h2><p>在使用nodejs模拟客户端进行高并发测试时，单个进程每隔100ms创建一个Socket，创建len个，那么这些Socket是对应了不同Port吗？</p>
+<h3 id="运行环境"><a href="#运行环境" class="headerlink" title="运行环境"></a>运行环境</h3><blockquote>
+<p>Centos7.5<br>node v10.16.0</p>
+</blockquote>
+<p>appDevice.js</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">et args = process.argv.splice(2);</span><br><span class="line">let devId_base = args[0];</span><br><span class="line">devId_base =1;</span><br><span class="line">// console.log(&apos;Device:devId_base= &apos; + devId_base);</span><br><span class="line">const len = 5;</span><br><span class="line"></span><br><span class="line">let i = 1;</span><br><span class="line"></span><br><span class="line">let socket_set = function () &#123;</span><br><span class="line">    let devId = len * (parseInt(devId_base) - 1) + i + &apos;&apos;;</span><br><span class="line">    console.log(&apos;Device=&apos; + devId + &apos;:\tstart&apos;);</span><br><span class="line"></span><br><span class="line">    let socket = require(&apos;socket.io-client&apos;)(&apos;http://xxx.xx.xx.xxx:80&apos;);</span><br><span class="line">    </span><br><span class="line">    let monitor = false;</span><br><span class="line"></span><br><span class="line">    socket.emit(&apos;ASK_JOIN_D&apos;, &#123; devId: devId &#125;);</span><br><span class="line">    let worker = function () &#123;</span><br><span class="line">        if (monitor) &#123;</span><br><span class="line">            let timeStamp = new Date().getTime();</span><br><span class="line">            // console.log(&apos;Device=&apos; + devId + &apos;:\temit\tdata_RT &apos; + timeStamp);</span><br><span class="line">            socket.emit(&apos;data_RT&apos;, [timeStamp, 11, 22, 44]);</span><br><span class="line">        &#125;</span><br><span class="line">        //socket.send(&#123;msg: &apos;send data&apos;&#125;);</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    setInterval(worker, 3000);</span><br><span class="line">    // setTimeout(function () &#123; console.log(&apos;stop run&apos;);&#125;, 100000);</span><br><span class="line"></span><br><span class="line">    i++;</span><br><span class="line">    if (i == len + 1) &#123;</span><br><span class="line">        i = 1;</span><br><span class="line">        clearInterval(timer);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let timer = setInterval(socket_set, 100);</span><br></pre></td></tr></table></figure>
+
+<p>运行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node appDevice.js 1</span><br></pre></td></tr></table></figure>
+
+<p>创建了5个Socket，依次执行如下步骤：</p>
+<ul>
+<li><p>确定改进程pid</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef |grep &apos;node ./app&apos;|grep -v grep</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>结果：</p>
@@ -258,11 +283,24 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -nap | grep 7915</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tcp        0      0 172.16.0.16:44856       119.23.79.169:80        ESTABLISHED 7915/node          </span><br><span class="line">tcp        0      0 172.16.0.16:44822       119.23.79.169:80        ESTABLISHED 7915/node          </span><br><span class="line">tcp        0      0 172.16.0.16:44818       119.23.79.169:80        ESTABLISHED 7915/node          </span><br><span class="line">tcp        0      0 172.16.0.16:44836       119.23.79.169:80        ESTABLISHED 7915/node          </span><br><span class="line">tcp        0      0 172.16.0.16:44846       119.23.79.169:80        ESTABLISHED 7915/node</span><br></pre></td></tr></table></figure>
-
+<blockquote>
+<p>tcp        0      0 172.16.0.16:44856       119.23.79.169:80        ESTABLISHED 7915/node<br>tcp        0      0 172.16.0.16:44822       119.23.79.169:80        ESTABLISHED 7915/node<br>tcp        0      0 172.16.0.16:44818       119.23.79.169:80        ESTABLISHED 7915/node<br>tcp        0      0 172.16.0.16:44836       119.23.79.169:80        ESTABLISHED 7915/node<br>tcp        0      0 172.16.0.16:44846       119.23.79.169:80        ESTABLISHED 7915/node   </p>
+</blockquote>
 </li>
 </ul>
-<p>可以看到，在进程创建5个socket的时候，进程占用了5个port，对于客户端，一个socket对应了一个port。</p>
+<p>可以看到，进程占用了5个Port，一个Socket对应了一个Port。</p>
+<p><strong>结论：对于客户端，创建socket的时候，会随机分配一个Port到该Socket，每个Socket都对应一个Port。</strong></p>
+<h2 id="关于服务器Socket与Port的关系"><a href="#关于服务器Socket与Port的关系" class="headerlink" title="关于服务器Socket与Port的关系"></a>关于服务器Socket与Port的关系</h2><p>参考此文的问答：<a href="https://segmentfault.com/q/1010000003101541" target="_blank" rel="noopener">TCP server 为什么一个端口可以建立多个连接？</a></p>
+<p>对于TCP协议，要成功建立一个新的链接，需要保证新链接四个要素组合体的唯一性：客户端的IP、客户端的port、服务器端的IP、服务器端的port。也就是说，服务器端的同一个IP和port，可以和同一个客户端的多个不同端口成功建立多个TCP链接（与多个不同的客户端当然也可以），只要保证【Server IP + Server Port + Client IP + Client Port】这个组合唯一不重复即可。</p>
+<blockquote>
+<p><strong>客户端</strong>发送TCP链接请求的端口，也就是后续建立TCP链接使用的端口，所以一旦TCP链接建立，端口就被占用，无法再建立第二个链接。</p>
+</blockquote>
+<blockquote>
+<p>而<strong>服务器端</strong>有两类端口：侦听端口 和 后续建立TCP链接的端口。其中侦听端口只负责侦听客户端发送来的TCP链接请求，不用作建立TCP链接使用，一旦侦听到有客户端发送TCP链接请求，就分配一个端口（一般随机分配，且不会重复）用于建立TCP链接，而不是所说的服务器一个端口能建立多个连接。</p>
+</blockquote>
+<hr>
+<p>以下为测试结果:<br>7476为此服务器上node的进程pid，在收到来自同一个客户端的5个请求后，分配了5个Port给5个Socket<br><img src="/pic/%E6%9C%8D%E5%8A%A1%E5%99%A8Socket%E4%B8%8EPort.png" alt></p>
+<p><strong>结论：一旦侦听到有客户端发送TCP链接请求，就分配一个端口（一般随机分配，且不会重复）用于建立TCP链接</strong></p>
 
     </div>
 
@@ -366,7 +404,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#关于客户端socket与port的关系"><span class="nav-number">1.</span> <span class="nav-text">关于客户端socket与port的关系</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#何为socket"><span class="nav-number">1.</span> <span class="nav-text">何为socket</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于客户端Socket与Port的关系"><span class="nav-number">2.</span> <span class="nav-text">关于客户端Socket与Port的关系</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#运行环境"><span class="nav-number">2.1.</span> <span class="nav-text">运行环境</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于服务器Socket与Port的关系"><span class="nav-number">3.</span> <span class="nav-text">关于服务器Socket与Port的关系</span></a></li></ol></div>
             
 
           </div>

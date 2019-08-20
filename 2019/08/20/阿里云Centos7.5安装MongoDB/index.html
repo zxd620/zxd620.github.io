@@ -55,17 +55,17 @@
   };
 </script>
 
-  <meta name="description" content="运行环境：阿里云Centos7.5参考：官方手册安装选择使用.rpm包安装的方式  配置仓库并通过yum安装最新稳定版本， 配置/etc/yum.conf，指定不自动更新mongodb相关程序。运行前准备推荐使用默认路径，默认路径为： /var/lib/mongo（data路径） /var/log/mongodb（log路径）    若使用自定义路径，则：  首先创建相关路径， 在配置文件/etc">
+  <meta name="description" content="运行环境：阿里云Centos7.5参考：官方手册安装选择使用.rpm包安装的方式 1.配置包管理系统（yum） 创建一个/etc/yum.repos.d/mongodb-org-4.0.repo文件，这样就可以直接通过yum来安装MongoDB了  [mongodb-org-4.0]name=MongoDB Repositorybaseurl=https://repo.mongodb.org/yu">
 <meta property="og:type" content="article">
 <meta property="og:title" content="阿里云Centos7.5安装MongoDB">
 <meta property="og:url" content="http://yoursite.com/2019/08/20/阿里云Centos7.5安装MongoDB/index.html">
 <meta property="og:site_name" content="赵晓东的网络日志">
-<meta property="og:description" content="运行环境：阿里云Centos7.5参考：官方手册安装选择使用.rpm包安装的方式  配置仓库并通过yum安装最新稳定版本， 配置/etc/yum.conf，指定不自动更新mongodb相关程序。运行前准备推荐使用默认路径，默认路径为： /var/lib/mongo（data路径） /var/log/mongodb（log路径）    若使用自定义路径，则：  首先创建相关路径， 在配置文件/etc">
+<meta property="og:description" content="运行环境：阿里云Centos7.5参考：官方手册安装选择使用.rpm包安装的方式 1.配置包管理系统（yum） 创建一个/etc/yum.repos.d/mongodb-org-4.0.repo文件，这样就可以直接通过yum来安装MongoDB了  [mongodb-org-4.0]name=MongoDB Repositorybaseurl=https://repo.mongodb.org/yu">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-08-20T08:03:58.602Z">
+<meta property="og:updated_time" content="2019-08-20T12:02:19.613Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="阿里云Centos7.5安装MongoDB">
-<meta name="twitter:description" content="运行环境：阿里云Centos7.5参考：官方手册安装选择使用.rpm包安装的方式  配置仓库并通过yum安装最新稳定版本， 配置/etc/yum.conf，指定不自动更新mongodb相关程序。运行前准备推荐使用默认路径，默认路径为： /var/lib/mongo（data路径） /var/log/mongodb（log路径）    若使用自定义路径，则：  首先创建相关路径， 在配置文件/etc">
+<meta name="twitter:description" content="运行环境：阿里云Centos7.5参考：官方手册安装选择使用.rpm包安装的方式 1.配置包管理系统（yum） 创建一个/etc/yum.repos.d/mongodb-org-4.0.repo文件，这样就可以直接通过yum来安装MongoDB了  [mongodb-org-4.0]name=MongoDB Repositorybaseurl=https://repo.mongodb.org/yu">
   <link rel="canonical" href="http://yoursite.com/2019/08/20/阿里云Centos7.5安装MongoDB/">
 
 
@@ -228,7 +228,7 @@
                 
               
 
-              <time title="Created: 2019-08-20 15:58:40 / Modified: 16:03:58" itemprop="dateCreated datePublished" datetime="2019-08-20T15:58:40+08:00">2019-08-20</time>
+              <time title="Created: 2019-08-20 15:58:40 / Modified: 20:02:19" itemprop="dateCreated datePublished" datetime="2019-08-20T15:58:40+08:00">2019-08-20</time>
             </span>
           
             
@@ -248,61 +248,70 @@
 
       
         <h3 id="运行环境：阿里云Centos7-5"><a href="#运行环境：阿里云Centos7-5" class="headerlink" title="运行环境：阿里云Centos7.5"></a>运行环境：阿里云Centos7.5</h3><h3 id="参考：官方手册"><a href="#参考：官方手册" class="headerlink" title="参考：官方手册"></a>参考：<a href="https://docs.mongodb.com/manual/tutorial/install-mongodb-on-red-hat/" target="_blank" rel="noopener">官方手册</a></h3><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>选择使用.rpm包安装的方式</p>
-<ol>
-<li>配置仓库并通过yum安装最新稳定版本，</li>
-<li>配置/etc/yum.conf，指定不自动更新mongodb相关程序。<h3 id="运行前准备"><a href="#运行前准备" class="headerlink" title="运行前准备"></a>运行前准备</h3>推荐使用默认路径，默认路径为：<ul>
+<p>1.配置包管理系统（yum）</p>
+<p>创建一个/etc/yum.repos.d/mongodb-org-4.0.repo文件，这样就可以直接通过yum来安装MongoDB了</p>
+<blockquote>
+<p>[mongodb-org-4.0]<br>name=MongoDB Repository<br>baseurl=<a href="https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/4.2/x86_64/" target="_blank" rel="noopener">https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/4.2/x86_64/</a><br>gpgcheck=1<br>enabled=1<br>gpgkey=<a href="https://www.mongodb.org/static/pgp/server-4.2.asc" target="_blank" rel="noopener">https://www.mongodb.org/static/pgp/server-4.2.asc</a></p>
+</blockquote>
+<p><strong>注意：</strong></p>
+<p>奇数版本是开发版本，不适用于生产环境使用。</p>
+<p>2.安装MongoDB包</p>
+<p>使用如下命令安装稳定版本：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install -y mongodb-org</span><br></pre></td></tr></table></figure>
+
+<p>想安装MongoDB的特定release版本的话，单独指定每个内容包，在包名上追加上版本号，比如下面的例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install -y mongodb-org-4.2.0 mongodb-org-server-4.2.0 mongodb-org-shell-4.2.0 mongodb-org-mongos-4.2.0 mongodb-org-tools-4.2.0</span><br></pre></td></tr></table></figure>
+
+<p>3.配置/etc/yum.conf，指定不自动更新mongodb相关程序。<br>虽然可以指定版本，但是，当有更新版本的时候，yum会自动更新。为避免非预期的更新，保持版本，在/etc/yum.conf文件中增加如下排除指令：</p>
+<blockquote>
+<p>exclude=mongodb-org,mongodb-org-server,mongodb-org-shell,mongodb-org-mongos,mongodb-org-tools</p>
+</blockquote>
+<h3 id="运行前准备"><a href="#运行前准备" class="headerlink" title="运行前准备"></a>运行前准备</h3><p>推荐使用默认路径，默认路径为：</p>
+<ul>
 <li>/var/lib/mongo（data路径）</li>
 <li>/var/log/mongodb（log路径）</li>
 </ul>
-</li>
-</ol>
 <p>若使用自定义路径，则：</p>
-<ol>
-<li>首先创建相关路径，</li>
-<li>在配置文件/etc/mongod.conf中进行如下修改：<ul>
+<p>1.首先创建相关路径，</p>
+<p>2.在配置文件/etc/mongod.conf中进行如下修改：</p>
+<ul>
 <li>storage.dbPath指定为新的data路径(e.g. /some/data/directory) </li>
 <li>systemLog.path指定为新的log文件路径（不同于data，不是文件夹路径,e.g. /some/log/directory/mongod.log）</li>
 </ul>
-</li>
-<li>确保运行MongoDB的用户，拥有所设置路径的访问权限</li>
-</ol>
+<p>3.确保运行MongoDB的用户，拥有所设置路径的访问权限</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chown -R mongod:mongod &lt;directory&gt;</span><br></pre></td></tr></table></figure>
 
 <p>如果更改了用户，则必须给改用户赋予访问路径的权限</p>
-<ol start="4">
-<li>必须<a href="https://docs.mongodb.com/manual/tutorial/install-mongodb-on-red-hat/#install-rhel-configure-selinux" target="_blank" rel="noopener">配置SELinux</a></li>
-</ol>
-<h3 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h3><ol>
-<li><p>开启MongoDB服务</p>
+<p>4.必须<a href="https://docs.mongodb.com/manual/tutorial/install-mongodb-on-red-hat/#install-rhel-configure-selinux" target="_blank" rel="noopener">配置SELinux</a></p>
+<h3 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h3><p>1.开启MongoDB服务</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service mongod start</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>验证开启成功<br>查看log文件内容，是否新增了如下行：</p>
+
+<p>或者</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start mongod.service</span><br></pre></td></tr></table></figure>
+
+<p>2.验证开启成功<br>查看log文件内容，是否新增了如下行：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[initandlisten] waiting for connections on port &lt;port&gt;</span><br></pre></td></tr></table></figure>
 
-</li>
-</ol>
-<p>其中<port>是/etc/mongod.conf中配置的，默认为27017</port></p>
-<ol start="3">
-<li><p>（可选）设置MongoDB开机自启动</p>
+<p>其中<port>是/etc/mongod.conf中配置的，默认为27017<br>3.（可选）设置MongoDB开机自启动</port></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chkconfig mongod on</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>停止MongoDB</p>
-</li>
-</ol>
+
+<p>4.停止MongoDB</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service mongod stop</span><br></pre></td></tr></table></figure>
 
-<ol start="5">
-<li>重启MongoDB</li>
-</ol>
+<p>或者</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop mongod.service</span><br></pre></td></tr></table></figure>
+
+<p>5.重启MongoDB</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service mongod restart</span><br></pre></td></tr></table></figure>
 
-<p>运行结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@VM_0_16_centos PFD]# sudo chkconfig mongod on</span><br><span class="line">Note: Forwarding request to &apos;systemctl enable mongod.service&apos;.</span><br></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart mongod.service</span><br></pre></td></tr></table></figure>
 
-<p>这并不表示运行错误，只是额外提醒，需要确认服务开启了。</p>
-<ol start="6">
-<li>使用MongoDB<br>本地使用mongo shell，则直接运行：</li>
-</ol>
+<p>运行结果：</p>
+<blockquote>
+<p>[root@VM_0_16_centos PFD]# sudo chkconfig mongod on<br>Note: Forwarding request to ‘systemctl enable mongod.service’.</p>
+</blockquote>
+<p>这并不表示运行错误，只是额外提醒，需要确认服务开启了。<br>6.使用MongoDB<br>本地使用mongo shell，则直接运行：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongo</span><br></pre></td></tr></table></figure>
 
 <p>在不同主机或者不同port运行，则参考<a href="https://docs.mongodb.com/manual/mongo/" target="_blank" rel="noopener">The mongo Shell</a></p>
@@ -322,8 +331,8 @@
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/2019/08/20/socket与port的关系/" rel="next" title="socket与port的关系">
-                  <i class="fa fa-chevron-left"></i> socket与port的关系
+                <a href="/2019/08/20/socket与port的关系/" rel="next" title="Socket与Port的关系">
+                  <i class="fa fa-chevron-left"></i> Socket与Port的关系
                 </a>
               
             </div>
