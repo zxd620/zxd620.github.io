@@ -55,14 +55,18 @@
   };
 </script>
 
-  <meta property="og:type" content="website">
+  <meta name="description" content="关于客户端socket与port的关系 确定进程pid 1ps -ef |grep &amp;apos;node ./app&amp;apos;|grep -v grep  结果： 1root      7915     1  1 21:53 pts/0    00:00:00 node ./appDevice.js 1  查询对应pid占用的port 1netstat -nap | grep 7915  结果：">
+<meta property="og:type" content="article">
 <meta property="og:title" content="赵晓东的网络日志">
-<meta property="og:url" content="http://yoursite.com/archives/2019/08/index.html">
+<meta property="og:url" content="http://yoursite.com/2019/08/20/socket与port的关系/index.html">
 <meta property="og:site_name" content="赵晓东的网络日志">
+<meta property="og:description" content="关于客户端socket与port的关系 确定进程pid 1ps -ef |grep &amp;apos;node ./app&amp;apos;|grep -v grep  结果： 1root      7915     1  1 21:53 pts/0    00:00:00 node ./appDevice.js 1  查询对应pid占用的port 1netstat -nap | grep 7915  结果：">
 <meta property="og:locale" content="zh">
+<meta property="og:updated_time" content="2019-08-20T05:52:04.022Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="赵晓东的网络日志">
-  <link rel="canonical" href="http://yoursite.com/archives/2019/08/">
+<meta name="twitter:description" content="关于客户端socket与port的关系 确定进程pid 1ps -ef |grep &amp;apos;node ./app&amp;apos;|grep -v grep  结果： 1root      7915     1  1 21:53 pts/0    00:00:00 node ./appDevice.js 1  查询对应pid占用的port 1netstat -nap | grep 7915  结果：">
+  <link rel="canonical" href="http://yoursite.com/2019/08/20/socket与port的关系/">
 
 
 <script id="page-configurations">
@@ -70,13 +74,13 @@
   CONFIG.page = {
     sidebar: "",
     isHome: false,
-    isPost: false,
+    isPost: true,
     isPage: false,
-    isArchive: true
+    isArchive: false
   };
 </script>
 
-  <title>Archiv | 赵晓东的网络日志</title>
+  <title> | 赵晓东的网络日志</title>
   
 
 
@@ -172,18 +176,6 @@
 
     
 
-    
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
 </nav>
 </div>
     </header>
@@ -194,140 +186,121 @@
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
-          <div id="content" class="content page-archive">
+          <div id="content" class="content page-post-detail">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
-      <span class="archive-page-counter">
-        
-        
-        
-          
-        
-        Öhm..! Insgesamt 3 Artikel. Bleib dran.
-      </span>
-      
-
-      
-
-  
-  
-  
-
-  
+  <div id="posts" class="posts-expand">
     
-    <div class="collection-title">
-      <h1 class="archive-year" id="archive-year-2019">2019</h1>
-    </div>
-  
-  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/20/socket与port的关系/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="赵晓东">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="赵晓东的网络日志">
+    </span>
+      <header class="post-header">
+
         
-          <a class="post-title-link" href="/2019/08/20/socket与port的关系/" itemprop="url">
+          <h1 class="post-title" itemprop="name headline">
+
             
-              <span itemprop="name">Unbenannt</span>
-            
-          </a>
+          </h1>
         
-      </h2>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-08-20T13:50:48+08:00"
-              content="2019-08-20">
-          08-20
-        </time>
-      </div>
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
 
-    </header>
-  </article>
+              
+                
+              
 
-
-
-  
-  
-  
-
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/08/15/Secucrt，vim插件以及系统语言LANG-对printf的影响/" itemprop="url">
+              <time title="Erstellt: 2019-08-20 13:50:48 / Geändert am: 13:52:04" itemprop="dateCreated datePublished" datetime="2019-08-20T13:50:48+08:00">2019-08-20</time>
+            </span>
+          
             
-              <span itemprop="name">Secucrt，vim插件以及系统语言LANG 对printf的影响</span>
+
             
-          </a>
-        
-      </h2>
+          
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-08-15T10:07:43+08:00"
-              content="2019-08-15">
-          08-15
-        </time>
-      </div>
+          
 
-    </header>
-  </article>
+        </div>
+      </header>
 
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
+      
+        <h2 id="关于客户端socket与port的关系"><a href="#关于客户端socket与port的关系" class="headerlink" title="关于客户端socket与port的关系"></a>关于客户端socket与port的关系</h2><ul>
+<li><p>确定进程pid</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef |grep &apos;node ./app&apos;|grep -v grep</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root      7915     1  1 21:53 pts/0    00:00:00 node ./appDevice.js 1</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查询对应pid占用的port</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -nap | grep 7915</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tcp        0      0 172.16.0.16:44856       119.23.79.169:80        ESTABLISHED 7915/node          </span><br><span class="line">tcp        0      0 172.16.0.16:44822       119.23.79.169:80        ESTABLISHED 7915/node          </span><br><span class="line">tcp        0      0 172.16.0.16:44818       119.23.79.169:80        ESTABLISHED 7915/node          </span><br><span class="line">tcp        0      0 172.16.0.16:44836       119.23.79.169:80        ESTABLISHED 7915/node          </span><br><span class="line">tcp        0      0 172.16.0.16:44846       119.23.79.169:80        ESTABLISHED 7915/node</span><br></pre></td></tr></table></figure>
 
-  
-  
-  
-
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/2019/08/14/hello-world/" itemprop="url">
-            
-              <span itemprop="name">Hello World</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2019-08-14T20:32:56+08:00"
-              content="2019-08-14">
-          08-14
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
+</li>
+</ul>
+<p>可以看到，在进程创建5个socket的时候，进程占用了5个port，对于客户端，一个socket对应了一个port。</p>
 
     </div>
+
+    
+    
+    
+        
+      
+
+      <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/2019/08/15/Secucrt，vim插件以及系统语言LANG-对printf的影响/" rel="next" title="Secucrt，vim插件以及系统语言LANG 对printf的影响">
+                  <i class="fa fa-chevron-left"></i> Secucrt，vim插件以及系统语言LANG 对printf的影响
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+            </div>
+          </div>
+        
+      </footer>
+    
   </div>
   
   
   
+  </article>
 
-  
-
+  </div>
 
 
           </div>
@@ -346,8 +319,17 @@
 
   <aside id="sidebar" class="sidebar">
     <div class="sidebar-inner">
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Übersicht
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
 
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -370,6 +352,23 @@
 
         </div>
       </div>
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#关于客户端socket与port的关系"><span class="nav-number">1.</span> <span class="nav-text">关于客户端socket与port的关系</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
 
     </div>
   </aside>
@@ -463,5 +462,9 @@
 
 
   
+  <script src="/js/scrollspy.js?v=7.3.0"></script>
+<script src="/js/post-details.js?v=7.3.0"></script>
+
+
 </body>
 </html>

@@ -192,6 +192,101 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/20/socket与port的关系/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="赵晓东">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="赵晓东的网络日志">
+    </span>
+      <header class="post-header">
+
+        
+          <h1 class="post-title" itemprop="name headline">
+              
+              <a href="/2019/08/20/socket与port的关系/" class="post-title-link" itemprop="url">Unbenannt</a>
+            
+          </h1>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+
+              
+                
+              
+
+              <time title="Erstellt: 2019-08-20 13:50:48 / Geändert am: 13:52:04" itemprop="dateCreated datePublished" datetime="2019-08-20T13:50:48+08:00">2019-08-20</time>
+            </span>
+          
+            
+
+            
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+            <h2 id="关于客户端socket与port的关系"><a href="#关于客户端socket与port的关系" class="headerlink" title="关于客户端socket与port的关系"></a>关于客户端socket与port的关系</h2><ul>
+<li><p>确定进程pid</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps -ef |grep &apos;node ./app&apos;|grep -v grep</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root      7915     1  1 21:53 pts/0    00:00:00 node ./appDevice.js 1</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查询对应pid占用的port</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -nap | grep 7915</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tcp        0      0 172.16.0.16:44856       119.23.79.169:80        ESTABLISHED 7915/node          </span><br><span class="line">tcp        0      0 172.16.0.16:44822       119.23.79.169:80        ESTABLISHED 7915/node          </span><br><span class="line">tcp        0      0 172.16.0.16:44818       119.23.79.169:80        ESTABLISHED 7915/node          </span><br><span class="line">tcp        0      0 172.16.0.16:44836       119.23.79.169:80        ESTABLISHED 7915/node          </span><br><span class="line">tcp        0      0 172.16.0.16:44846       119.23.79.169:80        ESTABLISHED 7915/node</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>可以看到，在进程创建5个socket的时候，进程占用了5个port，对于客户端，一个socket对应了一个port。</p>
+
+          
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/15/Secucrt，vim插件以及系统语言LANG-对printf的影响/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -224,11 +319,19 @@
                 
               
 
-              <time title="Erstellt: 2019-08-15 10:07:43 / Geändert am: 21:45:36" itemprop="dateCreated datePublished" datetime="2019-08-15T10:07:43+08:00">2019-08-15</time>
+              <time title="Erstellt: 2019-08-15 10:07:43" itemprop="dateCreated datePublished" datetime="2019-08-15T10:07:43+08:00">2019-08-15</time>
             </span>
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Bearbeitet am</span>
+                <time title="Geändert am: 2019-08-20 13:49:20" itemprop="dateModified" datetime="2019-08-20T13:49:20+08:00">2019-08-20</time>
+              </span>
             
           
 
@@ -262,7 +365,7 @@
 <li>代码以UTF-8格式创建和编写以及保存和gcc编译运行；</li>
 <li>若代码文档格式为GBK或者GB2312等，则编译运行时应制定gcc的选项-finput-charset；</li>
 </ul>
-<p>参考：<br>vim插件<br><a href>https://github.com/ma6174/vim-deprecated</a><br>gcc编译选项<br><a href>https://blog.csdn.net/wangsen_sc/article/details/6915995</a><br><a href>http://blog.chinaunix.net/uid-28458801-id-4515769.html</a><br>vim encoding fileencoding termencoding<br><a href>https://www.cnblogs.com/hopeworld/archive/2011/04/20/2022335.html</a></p>
+<p>参考：<br><a href="https://github.com/ma6174/vim-deprecated" target="_blank" rel="noopener">vim插件</a>[<br><a href="https://blog.csdn.net/wangsen_sc/article/details/6915995" target="_blank" rel="noopener">gcc编译选项</a><br><a href>http://blog.chinaunix.net/uid-28458801-id-4515769.html</a><br><a href="https://www.cnblogs.com/hopeworld/archive/2011/04/20/2022335.html" target="_blank" rel="noopener">vim encoding fileencoding termencoding</a></p>
 <p>疑问1：<br>-finput-charset 指定源文件的编码（若不指定，默认是UTF-8）<br>-fexec-charset 指定多字节字符串(const char<em>)常量在编译后的程序里保存的编码集（若不指定，默认是UTF-8）<br>-fwide-exec-charset 指定宽字节字符串(const wchar_t</em>)常量在编译后的程序里的保存的编码集</p>
 <p>这几个编译选项的区别含义不是很明白；</p>
 <p>疑问2：</p>
@@ -408,7 +511,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-count">3</span>
           <span class="site-state-item-name">Artikel</span>
         </a>
       </div>
