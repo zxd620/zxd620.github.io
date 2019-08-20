@@ -192,6 +192,144 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/20/阿里云Centos7.5安装MongoDB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="赵晓东">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="赵晓东的网络日志">
+    </span>
+      <header class="post-header">
+
+        
+          <h1 class="post-title" itemprop="name headline">
+              
+              <a href="/2019/08/20/阿里云Centos7.5安装MongoDB/" class="post-title-link" itemprop="url">Untitled</a>
+            
+          </h1>
+        
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2019-08-20 15:58:40 / Modified: 15:58:59" itemprop="dateCreated datePublished" datetime="2019-08-20T15:58:40+08:00">2019-08-20</time>
+            </span>
+          
+            
+
+            
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+            <h3 id="运行环境：阿里云Centos7-5"><a href="#运行环境：阿里云Centos7-5" class="headerlink" title="运行环境：阿里云Centos7.5"></a>运行环境：阿里云Centos7.5</h3><h3 id="参考：官方手册"><a href="#参考：官方手册" class="headerlink" title="参考：官方手册"></a>参考：<a href="https://docs.mongodb.com/manual/tutorial/install-mongodb-on-red-hat/" target="_blank" rel="noopener">官方手册</a></h3><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>选择使用.rpm包安装的方式</p>
+<ol>
+<li>配置仓库并通过yum安装最新稳定版本，</li>
+<li>配置/etc/yum.conf，指定不自动更新mongodb相关程序。<h3 id="运行前准备"><a href="#运行前准备" class="headerlink" title="运行前准备"></a>运行前准备</h3>推荐使用默认路径，默认路径为：<ul>
+<li>/var/lib/mongo（data路径）</li>
+<li>/var/log/mongodb（log路径）</li>
+</ul>
+</li>
+</ol>
+<p>若使用自定义路径，则：</p>
+<ol>
+<li>首先创建相关路径，</li>
+<li>在配置文件/etc/mongod.conf中进行如下修改：<ul>
+<li>storage.dbPath指定为新的data路径(e.g. /some/data/directory) </li>
+<li>systemLog.path指定为新的log文件路径（不同于data，不是文件夹路径,e.g. /some/log/directory/mongod.log）</li>
+</ul>
+</li>
+<li>确保运行MongoDB的用户，拥有所设置路径的访问权限</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chown -R mongod:mongod &lt;directory&gt;</span><br></pre></td></tr></table></figure>
+
+<p>如果更改了用户，则必须给改用户赋予访问路径的权限</p>
+<ol start="4">
+<li>必须<a href="https://docs.mongodb.com/manual/tutorial/install-mongodb-on-red-hat/#install-rhel-configure-selinux" target="_blank" rel="noopener">配置SELinux</a></li>
+</ol>
+<h3 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h3><ol>
+<li><p>开启MongoDB服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service mongod start</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>验证开启成功<br>查看log文件内容，是否新增了如下行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[initandlisten] waiting for connections on port &lt;port&gt;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>其中<port>是/etc/mongod.conf中配置的，默认为27017</port></p>
+<ol start="3">
+<li><p>（可选）设置MongoDB开机自启动</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chkconfig mongod on</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>停止MongoDB</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service mongod stop</span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>重启MongoDB</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo service mongod restart</span><br></pre></td></tr></table></figure>
+
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@VM_0_16_centos PFD]# sudo chkconfig mongod on</span><br><span class="line">Note: Forwarding request to &apos;systemctl enable mongod.service&apos;.</span><br></pre></td></tr></table></figure>
+
+<p>这并不表示运行错误，只是额外提醒，需要确认服务开启了。</p>
+<ol start="6">
+<li>使用MongoDB<br>本地使用mongo shell，则直接运行：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mongo</span><br></pre></td></tr></table></figure>
+
+<p>在不同主机或者不同port运行，则参考<a href="https://docs.mongodb.com/manual/mongo/" target="_blank" rel="noopener">The mongo Shell</a></p>
+
+          
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+      
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/20/socket与port的关系/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -511,7 +649,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
