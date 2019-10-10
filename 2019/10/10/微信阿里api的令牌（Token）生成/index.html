@@ -55,18 +55,18 @@
   };
 </script>
 
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+  <meta name="description" content="关于Token和signature，请先参看下面列出的文章，对cookie、session和token以及JWT(JSON Web Token)进行了详细的阐述[彻底弄懂session，cookie，token]https://segmentfault.com/a/1190000017831088[基于 Token 的身份验证：JSON Web Token（附：Node.js 项目）]https:">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2019/08/14/hello-world/index.html">
+<meta property="og:title" content="微信阿里api的令牌（Token）生成">
+<meta property="og:url" content="http://yoursite.com/2019/10/10/微信阿里api的令牌（Token）生成/index.html">
 <meta property="og:site_name" content="赵晓东的网络日志">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="关于Token和signature，请先参看下面列出的文章，对cookie、session和token以及JWT(JSON Web Token)进行了详细的阐述[彻底弄懂session，cookie，token]https://segmentfault.com/a/1190000017831088[基于 Token 的身份验证：JSON Web Token（附：Node.js 项目）]https:">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-08-14T12:32:56.378Z">
+<meta property="og:updated_time" content="2019-10-10T15:03:29.193Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
-  <link rel="canonical" href="http://yoursite.com/2019/08/14/hello-world/">
+<meta name="twitter:title" content="微信阿里api的令牌（Token）生成">
+<meta name="twitter:description" content="关于Token和signature，请先参看下面列出的文章，对cookie、session和token以及JWT(JSON Web Token)进行了详细的阐述[彻底弄懂session，cookie，token]https://segmentfault.com/a/1190000017831088[基于 Token 的身份验证：JSON Web Token（附：Node.js 项目）]https:">
+  <link rel="canonical" href="http://yoursite.com/2019/10/10/微信阿里api的令牌（Token）生成/">
 
 
 <script id="page-configurations">
@@ -80,7 +80,7 @@
   };
 </script>
 
-  <title>Hello World | 赵晓东的网络日志</title>
+  <title>微信阿里api的令牌（Token）生成 | 赵晓东的网络日志</title>
   
 
 
@@ -197,7 +197,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/14/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/10/微信阿里api的令牌（Token）生成/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="赵晓东">
@@ -211,7 +211,7 @@
       <header class="post-header">
 
         
-          <h1 class="post-title" itemprop="name headline">Hello World
+          <h1 class="post-title" itemprop="name headline">微信阿里api的令牌（Token）生成
 
             
           </h1>
@@ -228,8 +228,12 @@
                 
               
 
-              <time title="Created: 2019-08-14 20:32:56" itemprop="dateCreated datePublished" datetime="2019-08-14T20:32:56+08:00">2019-08-14</time>
+              <time title="Created: 2019-10-10 20:47:43 / Modified: 23:03:29" itemprop="dateCreated datePublished" datetime="2019-10-10T20:47:43+08:00">2019-10-10</time>
             </span>
+          
+            
+
+            
           
 
           
@@ -243,19 +247,29 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <h2 id="关于Token和signature，请先参看下面列出的文章，对cookie、session和token以及JWT-JSON-Web-Token-进行了详细的阐述"><a href="#关于Token和signature，请先参看下面列出的文章，对cookie、session和token以及JWT-JSON-Web-Token-进行了详细的阐述" class="headerlink" title="关于Token和signature，请先参看下面列出的文章，对cookie、session和token以及JWT(JSON Web Token)进行了详细的阐述"></a>关于Token和signature，请先参看下面列出的文章，对cookie、session和token以及JWT(JSON Web Token)进行了详细的阐述</h2><p>[彻底弄懂session，cookie，token]<a href="https://segmentfault.com/a/1190000017831088" target="_blank" rel="noopener">https://segmentfault.com/a/1190000017831088</a><br>[基于 Token 的身份验证：JSON Web Token（附：Node.js 项目）]<a href="https://ninghao.net/blog/2834" target="_blank" rel="noopener">https://ninghao.net/blog/2834</a></p>
+<h2 id="token的组成："><a href="#token的组成：" class="headerlink" title="token的组成："></a>token的组成：</h2><ul>
+<li>uid：用户唯一身份标识</li>
+<li>time:当前时间的时间戳</li>
+<li>sign：签名</li>
+<li>固定参数(可选）</li>
+</ul>
+<p>在了解了Token基本原理的情况下，我们对微信和阿里的签名生成机制进行了查阅和总结，过程比较类似，具体如下：</p>
+<ol start="0">
+<li>服务器或者服务商将secret给到客户；</li>
+<li>secret+salt（盐）生成signature，</li>
+<li>将signature、ID以及salt一起发送；</li>
+<li>服务器通过ID找到对应的secret；</li>
+<li>服务器通过相同的加密算法，使用secret+salt（盐）生成signature；</li>
+<li>进行比对；</li>
+</ol>
+<p><strong>注意点：</strong></p>
+<ol>
+<li><p>salt的生成元素里，必须有随机数nonceStr，阿里与微信均加上了TimeStamp与url中的参数；<br>加入TimeStamp的作用：由于时间戳具有时效性，可通过加入对时间戳时效的校验，强制要求时间戳这个参数随时间变化。<br>假如某个完整的api请求被截获或者泄露了，如果重复该api请求进行攻击，受限于时间校验机制，盗取者使用该api进行重复请求的时间窗口也是受限的；<br>在时间窗口之后，必须使用真实的时间戳，由于他不知道加密算法，无法获知新时间戳下对应的signature，因此也无法盗用该api。</p>
+</li>
+<li><p>微信与阿里的区别：微信增加了Ticket的时效性，需要从服务器端获取分配；阿里则采用了固定的accessKeySecret。</p>
+</li>
+</ol>
 
     </div>
 
@@ -272,15 +286,15 @@
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
+                <a href="/2019/08/20/阿里云Centos7.5安装MongoDB/" rel="next" title="阿里云Centos7.5安装MongoDB">
+                  <i class="fa fa-chevron-left"></i> 阿里云Centos7.5安装MongoDB
+                </a>
+              
             </div>
 
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-              
-                <a href="/2019/08/15/Secucrt，vim插件以及系统语言LANG-对printf的影响/" rel="prev" title="Secucrt，vim插件以及系统语言LANG 对printf的影响">
-                  Secucrt，vim插件以及系统语言LANG 对printf的影响 <i class="fa fa-chevron-right"></i>
-                </a>
               
             </div>
           </div>
@@ -355,7 +369,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#关于Token和signature，请先参看下面列出的文章，对cookie、session和token以及JWT-JSON-Web-Token-进行了详细的阐述"><span class="nav-number">1.</span> <span class="nav-text">关于Token和signature，请先参看下面列出的文章，对cookie、session和token以及JWT(JSON Web Token)进行了详细的阐述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#token的组成："><span class="nav-number">2.</span> <span class="nav-text">token的组成：</span></a></li></ol></div>
             
 
           </div>
